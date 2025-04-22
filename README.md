@@ -1,96 +1,88 @@
-# Custom IoT PCB with ESP32‑C3‑02 & TP4056 Li‑ion Charger
+# Custom IoT PCB with ESP32‑C3‑02 & TP4056 Charger
 
-A versatile, battery‑powered IoT development board built around the ESP32‑C3‑02 SoC, featuring integrated Li‑ion charging, environmental sensing, and expandable storage.
+**Portable • Wi‑Fi & BLE • Li‑ion Charging • Modular**
 
 ---
 
-## Table of Contents
+## 📋 Table of Contents
 1. [Overview](#overview)
-2. [Key Features](#key-features)
-3. [Hardware Design](#hardware-design)
-4. [Firmware](#firmware)
-5. [Applications](#applications)
-6. [Getting Started](#getting-started)
-7. [Repository Structure](#repository-structure)
+2. [Features](#features)
+3. [Design Highlights](#design-highlights)
+4. [Applications](#applications)
+5. [Getting Started](#getting-started)
+6. [Repository Structure](#repository-structure)
+7. [License](#license)
 
 ---
 
-## Overview
+## 🌟 Overview
+A compact, battery‑powered IoT development board built around the ESP32‑C3‑02 SoC. It integrates a TP4056 Li‑ion charger for safe single‑cell battery management and provides Wi‑Fi and BLE connectivity, environmental sensing, and expandable storage—all on a custom PCB optimized for low power consumption.
 
-This project delivers a custom PCB optimized for low‑power IoT deployments. At its heart is the ESP32‑C3‑02 SoC, providing both Wi‑Fi and BLE connectivity. Power management is handled by the TP4056 charger IC, allowing safe, efficient charging of a single‑cell Li‑ion battery via USB‑C.
-
-## Key Features
-
-- **SoC:** ESP32‑C3‑02 (32‑bit RISC‑V, Wi‑Fi, BLE)
-- **Battery Charging:** TP4056 single‑cell Li‑ion charger with thermal regulation, undervoltage lockout, and trickle charge support
-- **Power Inputs:**
-  - USB‑C (5 V) for charging and power
-  - Li‑ion battery connector (3.7 V nominal)
-- **Sensors:**
+## 🚀 Features
+- **Microcontroller:** ESP32‑C3‑02 (32‑bit RISC‑V core with Wi‑Fi & BLE)
+- **Power Management:**
+  - TP4056 charger IC with thermal regulation, undervoltage lockout, and trickle charging
+  - USB‑C input (5 V) and Li‑ion battery connector (3.7 V nominal)
+  - On‑board 3.3 V regulator for stable MCU/peripherals power
+- **Environmental Sensors:**
   - BME280 (temperature, humidity, pressure)
   - Ambient light sensor
   - Sound level sensor
 - **Storage:**
-  - Micro SD card slot
-  - External SPI flash memory
-- **Display:** 0.96" I2C OLED for live data feedback
-- **Indicators:** Dual‑color LEDs for charging status (charging/full)
+  - Micro SD card slot for data logging
+  - SPI flash memory for firmware and data
+- **Display:** 0.96" I2C OLED for real‑time metrics
+- **Indicators:** Dual‑color LEDs (red = charging, green = full)
+- **Expansion:** Breakouts for I2C, UART, SPI, and GPIO headers
 
-## Hardware Design
+## 🛠️ Design Highlights
+1. **Power Integration**
+   - USB‑C powers both system operation and Li‑ion battery charging
+   - Charge current adjustable via resistor
+   - Protection against over‑charge, over‑discharge, and thermal events
+2. **PCB Layout Optimization**
+   - Wide power traces minimize voltage drop
+   - Thermal vias and copper pours under TP4056 for heat dissipation
+3. **Modular Architecture**
+   - Unified I2C bus for adding more sensors/peripherals
+   - Standard headers simplify prototyping and debugging
 
-1. **Power Management**
-   - USB‑C input streams 5 V to the TP4056; charge rate adjustable via resistor.
-   - On‑board protection guards against over‑charge, over‑discharge, and thermal overload.
-   - Step‑down regulator delivers stable 3.3 V to the ESP32‑C3‑02 and peripherals.
+## 🌐 Applications
+- **Environmental Monitoring:** Deploy edge nodes for temperature, humidity, and pressure logging.
+- **Portable Data Logging:** Battery‑powered capture of light, sound, and sensor metrics.
+- **Rapid Prototyping:** Baseboard for ESP32‑C3 projects requiring power management and connectivity.
 
-2. **Modularity**
-   - I2C bus breakout for easy sensor and peripheral expansion.
-   - Standard headers for UART, SPI, and GPIO access.
-
-3. **PCB Layout**
-   - Optimized trace widths for power efficiency.
-   - Thermal vias and copper pours for TP4056 heat dissipation.
-
-## Firmware
-
-- **Language:** C/C++ using ESP‑IDF
-- **Features:**
-  - Sensor polling and data aggregation
-  - SD card logging with file rotation
-  - OLED dashboard for real‑time metrics
-  - OTA update support over Wi‑Fi
-
-## Applications
-
-- **Environmental Monitoring:** Deploy edge devices for temperature, humidity, and pressure logging.
-- **Portable Data Loggers:** Battery‑powered logging of ambient light, sound, and sensor data.
-- **Prototype Platform:** Rapid development of ESP32‑based IoT solutions.
-
-## Getting Started
-
-1. **Download the Source Files**  
-   Visit the Cadlab project page and download the files:  
-   https://cadlab.io/project/28685/main/files
-
-2. **Explore the Hardware Design**  
-   - Open `hardware/esp32_c3_tp4056.kicad_pcb` in KiCad.
-
-3. **Build & Flash Firmware**  
-   ```bash
-   cd firmware
-   idf.py set-target esp32c3
-   idf.py build flash monitor
-   ```
-
-4. **Power Up**  
-   - Connect USB‑C to a 5 V supply or attach a Li‑ion battery.  
-   - Observe LEDs: red (charging), green (charged).
-
-## Repository Structure
-
+## 🏁 Getting Started
+### 1. Download Source Files
+```bash
+git clone https://cadlab.io/project/28685/main/files.git
+cd files
 ```
-├── hardware/            # KiCad schematics & PCB files
-├── firmware/            # ESP‑IDF project sources
-├── docs/                # Datasheets, assembly guides, test reports
-└── LICENSE              # MIT License
+
+### 2. Review Hardware
+- Open `hardware/esp32_c3_tp4056.kicad_pcb` in KiCad
+
+### 3. Build & Flash Firmware
+```bash
+cd firmware
+idf.py set-target esp32c3
+idf.py build flash monitor
 ```
+
+### 4. Power & Test
+- Connect via USB‑C (5 V) or attach a Li‑ion cell
+- Verify red LED lights during charging and green when full
+- Monitor serial output for sensor readings and status
+
+## 📂 Repository Structure
+```
+files/
+├── hardware/        # KiCad schematics & PCB layout
+├── firmware/        # ESP‑IDF project source code
+├── docs/            # Component datasheets & assembly guides
+└── LICENSE          # MIT License
+```
+
+## 📄 License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
