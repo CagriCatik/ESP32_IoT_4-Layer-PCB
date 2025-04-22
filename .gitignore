@@ -1,0 +1,95 @@
+# === OS-specific ===
+# macOS
+.DS_Store
+.AppleDouble
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# === Editor temp & backup files ===
+# Swap, backup, temp, log
+*~
+*.bak
+*.swp
+*.tmp
+*.log
+
+# Auto-saved or crash-recovery files
+*auto_saved_files*
+*.orig
+
+# === IDE / editor configs ===
+.vscode/
+.idea/
+*.code-workspace
+
+# === Node.js ===
+node_modules/
+
+# === KiCad ===
+# PCB/board backups, swap & project autosaves
+*.kicad_pcb-bak
+*.kicad_pcb-prl
+*.kicad_pcb-swp
+*.kicad_sch-bak
+*.kicad_wks-bak
+*.autosave
+
+# User-specific/project settings
+*.kicad_pro.user
+*.kicad_prl
+
+# Lock files
+*.lock
+*.lck
+
+# Temporary netlist or scripts
+*.xml
+*.json
+
+# Symbol & footprint library cache
+sym-lib-table
+fp-lib-table
+*.dcm
+
+# Project-specific auto-saves
+KiCad project/*autosave*
+
+# === Generated fabrication outputs ===
+# Gerbers, drills, plots, etc.
+*.drl
+*.gbr
+*.gbo
+*.gbl
+*.gtl
+*.gts
+*.gto
+*.gtt
+*.fab
+*.gbr.zip
+
+# Vector & plot exports
+*.dxf
+*.ps
+#*.pdf
+#*.svg
+
+fabrication/
+manufacturing/
+
+# === BOM, netlists & drill reports ===
+*.bom
+*.net
+*.dri
+
+# === Simulation data ===
+*.raw
+*.spice
+*.plt
+
+# === Miscellaneous backups / exports ===
+ESP32 sensor board-backups/
